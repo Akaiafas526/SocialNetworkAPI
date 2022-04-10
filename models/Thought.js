@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
-
 const formatTimeStamp = require('../utils/helpers')
+const reactionSchema = require('./Reaction')
 
 // Schema to create Student model
 const thoughtSchema = new Schema(
