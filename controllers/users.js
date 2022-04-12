@@ -44,7 +44,7 @@ module.exports = {
         res.status(500).json(err);
       });
   },
-
+  // Updates user
   updateUser(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.id },
@@ -62,7 +62,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 
-  // Add an friend to a user
+  // Add a friend to a user
   addFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
@@ -79,7 +79,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 
-  // Remove assignment from a student
+  // Removes friend from a user
   removeFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
