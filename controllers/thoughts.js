@@ -80,13 +80,13 @@ module.exports = {
   removeReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
-      { $pull: { friends: req.params.friendId } },
+      { $pull: { reaction: {reactionId: req.params.reactionId}} },
       { new: true }
     )
-      .then((user) =>
-        !user
-          ? res.status(404).json({ message: "No user found with that ID" })
-          : res.status(200).json(user)
+      .then((thought) =>
+        !thought
+          ? res.status(404).json({ message: "No reaction found with that ID" })
+          : res.status(200).json(thought)
       )
       .catch((err) => res.status(500).json(err));
   },

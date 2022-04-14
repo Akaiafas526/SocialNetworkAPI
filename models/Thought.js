@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 const formatTimeStamp = require('../utils/helpers')
 const reactionSchema = require('./Reaction')
 
-// Schema to create Student model
+// Schema to create thought model
 const thoughtSchema = new Schema(
   {
    thoughtText: {
