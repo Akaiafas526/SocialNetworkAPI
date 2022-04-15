@@ -14,7 +14,7 @@ module.exports = {
   },
   // Get a single user
   getSingleUser(req, res) {
-    User.findOne({ _id: req.params.id })
+    User.findOne({ _id: req.params.userId })
       .then((user) =>
         !user
           ? res.status(404).json({ message: "No user with that ID" })
@@ -33,7 +33,7 @@ module.exports = {
   },
   // Delete a user
   deleteUser(req, res) {
-    User.findOneAndRemove({ _id: req.params.id })
+    User.findOneAndRemove({ _id: req.params.userId })
       .then((user) =>
         !user
           ? res.status(404).json({ message: "No such user exists" })
@@ -47,7 +47,7 @@ module.exports = {
   // Updates user
   updateUser(req, res) {
     User.findOneAndUpdate(
-      { _id: req.params.id },
+      { _id: req.params.userId },
       {
         username: req.body.username,
         email: req.body.email,

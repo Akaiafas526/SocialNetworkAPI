@@ -2,8 +2,8 @@ const { User, Thought } = require("../models");
 
 module.exports = {
   // Get all thoughts
-  getThoughts(req, res) {
-    Thought.find()
+   getThoughts(req, res) {
+     Thought.find()
       .then((thoughts) => {
         return res.json(thoughts);
       })
@@ -13,8 +13,8 @@ module.exports = {
       });
   },
   // Get a single thought
-  getSingleThought(req, res) {
-    Thought.findOne({ _id: req.params.id })
+   getSingleThought(req, res) {
+     Thought.findOne({ _id: req.params.thoughtId })
       .then((thought) =>
         !thought
           ? res.status(404).json({ message: "No thought with that ID" })
@@ -33,7 +33,7 @@ module.exports = {
   },
   // Delete a thought
   deleteThought(req, res) {
-    Thought.findOneAndRemove({ _id: req.params.id })
+    Thought.findOneAndRemove({ _id: req.params.thoughtId })
       .then((thought) =>
         !thought
           ? res.status(404).json({ message: "No such thought exists" })
@@ -47,9 +47,9 @@ module.exports = {
   // Updates thought
   updateThought(req, res) {
     Thought.findOneAndUpdate(
-      { _id: req.params.id },
+      { _id: req.params.thoughtId },
       {
-        username: req.body.username,
+        thoughtText: req.body.thoughtText,
       },
       { new: true }
     )
@@ -80,7 +80,7 @@ module.exports = {
   removeReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
-      { $pull: { reaction: {reactionId: req.params.reactionId}} },
+      { $pull: { reactions: {_id: req.params.reactionId}} },
       { new: true }
     )
       .then((thought) =>
