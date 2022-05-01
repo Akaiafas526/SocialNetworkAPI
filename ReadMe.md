@@ -16,6 +16,10 @@ Social Network API is an api to be used when creating a social network app. It a
 
 [Questions](#questions)
 
+## Video walkthrough
+[Video Walkthrough](https://youtu.be/EbvC9X2RdjE)
+
+
 ## Installation
 
 To install the necessary dependencies, run the following command:
